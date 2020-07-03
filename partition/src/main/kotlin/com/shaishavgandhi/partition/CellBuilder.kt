@@ -19,8 +19,16 @@ fun cell(builder: CellBuilder.() -> Unit): Cell = CellBuilder().apply(builder).b
 
 class CellBuilder {
   var value: String = ""
+    @JvmName("value")
+    set
+    @JvmName("value")
+    get
 
-  var alignment = Alignment.NONE
+  var alignment: Alignment = Alignment.NONE
+    @JvmName("alignment")
+    set
+    @JvmName("alignment")
+    get
 
   fun build(): Cell {
     return Cell(value, alignment)

@@ -17,10 +17,7 @@ package com.shaishavgandhi.partition.tests;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import com.shaishavgandhi.partition.Alignment;
-import com.shaishavgandhi.partition.Cell;
-import com.shaishavgandhi.partition.Table;
-import com.shaishavgandhi.partition.TableBuilder;
+import com.shaishavgandhi.partition.*;
 import org.junit.Test;
 
 public class JavaTests {
