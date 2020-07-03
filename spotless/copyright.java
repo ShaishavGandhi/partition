@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020. Shaishav Gandhi
+ * Copyright (C) $YEAR. Shaishav Gandhi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,24 +13,3 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.shaishavgandhi.partition
-
-class Row(
-  internal val cells: List<Cell>
-) {
-
-  override fun equals(other: Any?): Boolean {
-    if (this === other) return true
-    if (javaClass != other?.javaClass) return false
-
-    other as Row
-
-    if (cells != other.cells) return false
-
-    return true
-  }
-
-  override fun hashCode(): Int {
-    return cells.hashCode()
-  }
-}

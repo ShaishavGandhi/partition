@@ -15,52 +15,29 @@
  */
 package com.shaishavgandhi.partition
 
-class TableBuilder {
-
-  private val rows: MutableList<Row> = mutableListOf()
-
-  fun header(row: Row): TableBuilder {
-    rows.add(0, row)
-    return this
-  }
-
-  fun header(vararg values: Cell): TableBuilder {
-    return header(Row(values.toList()))
-  }
-
-  fun header(vararg values: String): TableBuilder {
-    return header(Row(values.map { it.toCell() }.toList()))
-  }
-
-  fun row(row: Row): TableBuilder {
-    rows.add(row)
-    return this
-  }
-
-  fun row(vararg values: String): TableBuilder {
-    return row(Row(values.map { it.toCell() }.toList()))
-  }
-
-  fun build(): Table {
-    return Table(rows)
-  }
-
-  internal fun String.toCell(): Cell {
-    return Cell(this)
+class Cell @JvmOverloads constructor(
+  internal val value: String,
+  internal val alignment: Alignment = Alignment.NONE
+) {
+  override fun toString(): String {
+    return value
   }
 
   override fun equals(other: Any?): Boolean {
     if (this === other) return true
     if (javaClass != other?.javaClass) return false
 
-    other as TableBuilder
+    other as Cell
 
-    if (rows != other.rows) return false
+    if (value != other.value) return false
+    if (alignment != other.alignment) return false
 
     return true
   }
 
   override fun hashCode(): Int {
-    return rows.hashCode()
+    var result = value.hashCode()
+    result = 31 * result + alignment.hashCode()
+    return result
   }
 }

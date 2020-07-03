@@ -15,52 +15,32 @@
  */
 package com.shaishavgandhi.partition
 
-class TableBuilder {
+fun cell(builder: CellBuilder.() -> Unit): Cell = CellBuilder().apply(builder).build()
 
-  private val rows: MutableList<Row> = mutableListOf()
+class CellBuilder {
+  var value: String = ""
+    @JvmName("value")
+    set
+    @JvmName("value")
+    get
 
-  fun header(row: Row): TableBuilder {
-    rows.add(0, row)
-    return this
-  }
+  var alignment: Alignment = Alignment.NONE
+    @JvmName("alignment")
+    set
+    @JvmName("alignment")
+    get
 
-  fun header(vararg values: Cell): TableBuilder {
-    return header(Row(values.toList()))
-  }
-
-  fun header(vararg values: String): TableBuilder {
-    return header(Row(values.map { it.toCell() }.toList()))
-  }
-
-  fun row(row: Row): TableBuilder {
-    rows.add(row)
-    return this
-  }
-
-  fun row(vararg values: String): TableBuilder {
-    return row(Row(values.map { it.toCell() }.toList()))
-  }
-
-  fun build(): Table {
-    return Table(rows)
-  }
-
-  internal fun String.toCell(): Cell {
-    return Cell(this)
+  fun build(): Cell {
+    return Cell(value, alignment)
   }
 
   override fun equals(other: Any?): Boolean {
     if (this === other) return true
     if (javaClass != other?.javaClass) return false
-
-    other as TableBuilder
-
-    if (rows != other.rows) return false
-
     return true
   }
 
   override fun hashCode(): Int {
-    return rows.hashCode()
+    return javaClass.hashCode()
   }
 }
