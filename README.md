@@ -39,10 +39,40 @@ val table = table {
 }
 ```
 
+### Cell Alignment
+
+Partition supports cell alignment by specifying it in your table header
+```kotlin
+val table = table {
+  header(
+    cell {
+      value = "Command"
+      alignment = Alignment.START
+    },
+    cell {
+      value = "Description"
+      alignment = Alignment.CENTER
+    },
+    cell {
+      value = "Alias"
+      alignment = Alignment.END
+    }
+  )
+  row("git status", "List all new or modified files", "s")
+  row("git diff", "Show file differences that haven't been staged", "d")
+}
+```
+which yields
+
+| Command | Description | Alias |
+| :-- | :--: | --: |
+| git status | List all new or modified files | s |
+| git diff | Show file differences that haven't been staged | d |
+
 ## Features
 
 * Explicit table headers
-* Cell alignment (upcoming)
+* Cell alignment
 * Different markdown providers (upcoming)
 
 ## License
