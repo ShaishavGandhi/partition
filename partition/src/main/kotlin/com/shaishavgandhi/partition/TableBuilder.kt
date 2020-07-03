@@ -45,6 +45,10 @@ class TableBuilder {
     return Table(rows)
   }
 
+  internal fun String.toCell(): Cell {
+    return Cell(this)
+  }
+
   override fun equals(other: Any?): Boolean {
     if (this === other) return true
     if (javaClass != other?.javaClass) return false
@@ -58,9 +62,5 @@ class TableBuilder {
 
   override fun hashCode(): Int {
     return rows.hashCode()
-  }
-
-  internal fun String.toCell(): Cell {
-    return Cell(this)
   }
 }
