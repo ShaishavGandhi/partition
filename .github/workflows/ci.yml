@@ -12,14 +12,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Gradle Wrapper Validation
-        uses: gradle/wrapper-validation-action@v1
-
       - name: Install JDK ${{ matrix.java_version }}
         uses: actions/setup-java@v1
         with:
-          java-version: ${{ matrix.java_versions }}
+          java-version: ${{ matrix.java_version }}
+      - name: Gradle Wrapper Validation
+        uses: gradle/wrapper-validation-action@v1
       - name: Spotless
         run: ./gradlew spotlessCheck
       - name: Build with Gradle
