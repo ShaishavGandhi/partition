@@ -1,24 +1,25 @@
 apply plugin: 'java-library'
+apply plugin: 'com.vanniktech.maven.publish'
+
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_6
-    targetCompatibility = JavaVersion.VERSION_1_6
-    withSourcesJar()
+  sourceCompatibility = JavaVersion.VERSION_1_6
+  targetCompatibility = JavaVersion.VERSION_1_6
 }
 
 apply plugin: 'org.jetbrains.kotlin.jvm'
 compileKotlin {
-    kotlinOptions {
-        jvmTarget = '1.8'
-        freeCompilerArgs = [
-                '-progressive',
-                '-Xjvm-default=enable',
-        ]
-    }
+  kotlinOptions {
+    jvmTarget = '1.8'
+    freeCompilerArgs = [
+        '-progressive',
+        '-Xjvm-default=enable',
+    ]
+  }
 }
 
 dependencies {
-    api deps.kotlinStdLib
+  api deps.kotlinStdLib
 
-    testImplementation deps.junit
-    testImplementation deps.truth
+  testImplementation deps.junit
+  testImplementation deps.truth
 }
