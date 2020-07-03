@@ -13,7 +13,7 @@ buildscript {
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
-        classpath 'org.jlleitschuh.gradle:ktlint-gradle:9.1.0'
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:3.27.2"
         classpath 'org.jetbrains.dokka:dokka-gradle-plugin:0.10.0'
         classpath 'ru.vyarus:gradle-animalsniffer-plugin:1.5.0'
     }
@@ -34,12 +34,14 @@ subprojects {
         jcenter()
     }
 
-    apply plugin: 'org.jlleitschuh.gradle.ktlint'
-    ktlint {
-        version = '0.35.0'
-        disabledRules = [
-                'filename',
-        ]
+    apply plugin: 'com.diffplug.gradle.spotless'
+    spotless {
+        kotlin {
+            target "**/*.kt"
+            ktlint("0.36.0").userData(['indent_size': '2'])
+
+            licenseHeaderFile rootProject.file('spotless/copyright.kt')		// License header file
+        }
     }
 
     plugins.withId('org.jetbrains.kotlin.jvm') {
