@@ -1,6 +1,6 @@
 # Partition
 
-A small library for generating markdown tables. 
+A small library for generating markdown tables. Inspired by [picnic](https://github.com/JakeWharton/picnic)
 
 ## Download
 
