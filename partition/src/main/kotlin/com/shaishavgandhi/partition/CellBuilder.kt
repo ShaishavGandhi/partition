@@ -15,22 +15,14 @@
  */
 package com.shaishavgandhi.partition
 
-class Row(
-  internal val cells: List<Cell>
-) {
+fun cell(builder: CellBuilder.() -> Unit): Cell = CellBuilder().apply(builder).build()
 
-  override fun equals(other: Any?): Boolean {
-    if (this === other) return true
-    if (javaClass != other?.javaClass) return false
+class CellBuilder {
+  var value: String = ""
 
-    other as Row
+  var alignment = Alignment.NONE
 
-    if (cells != other.cells) return false
-
-    return true
-  }
-
-  override fun hashCode(): Int {
-    return cells.hashCode()
+  fun build(): Cell {
+    return Cell(value, alignment)
   }
 }

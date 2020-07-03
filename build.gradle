@@ -40,6 +40,14 @@ subprojects {
 
       licenseHeaderFile rootProject.file('spotless/copyright.kt')    // License header file
     }
+    java {
+      target "**/*.java"
+      googleJavaFormat("1.7")
+      licenseHeaderFile rootProject.file('spotless/copyright.java')
+      removeUnusedImports()
+      trimTrailingWhitespace()
+      endWithNewline()
+    }
   }
 
   plugins.withId('org.jetbrains.kotlin.jvm') {

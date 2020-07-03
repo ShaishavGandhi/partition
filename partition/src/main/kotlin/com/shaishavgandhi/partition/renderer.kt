@@ -43,7 +43,12 @@ private fun render(row: Row, stringBuilder: StringBuilder, isHeader: Boolean = f
   if (isHeader) {
     stringBuilder.append("|")
     for (cell in row.cells) {
-      stringBuilder.append(" -- ")
+      when (cell.alignment) {
+        Alignment.START -> stringBuilder.append(" :-- ")
+        Alignment.CENTER -> stringBuilder.append(" :--: ")
+        Alignment.END -> stringBuilder.append(" --: ")
+        Alignment.NONE -> stringBuilder.append(" -- ")
+      }
       stringBuilder.append("|")
     }
     stringBuilder.append("\n")

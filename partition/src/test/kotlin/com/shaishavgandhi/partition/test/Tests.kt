@@ -13,9 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.shaishavgandhi.partition
+package com.shaishavgandhi.partition.test
 
 import com.google.common.truth.Truth.assertThat
+import com.shaishavgandhi.partition.Alignment
+import com.shaishavgandhi.partition.TableBuilder
+import com.shaishavgandhi.partition.cell
+import com.shaishavgandhi.partition.table
 import org.junit.Test
 
 class Tests {
@@ -109,6 +113,51 @@ class Tests {
       || Hello | World |
       || -- | -- |
       || Shaishav | Gandhi |
+      |""".trimMargin())
+  }
+
+  @Test
+  fun `extended dsl`() {
+    val table = table {
+      header("Command", "Description")
+      row("git status", "List all new or modified files")
+      row("git diff", "Show file differences that haven't been staged")
+    }
+
+    assertThat(table.toString()).isEqualTo("""
+      || Command | Description |
+      || -- | -- |
+      || git status | List all new or modified files |
+      || git diff | Show file differences that haven't been staged |
+      |""".trimMargin())
+  }
+
+  @Test
+  fun `start aligned dsl`() {
+    val table = table {
+      header(
+        cell {
+          value = "Command"
+          alignment = Alignment.START
+        },
+        cell {
+          value = "Description"
+          alignment = Alignment.CENTER
+        },
+        cell {
+          value = "Alias"
+          alignment = Alignment.END
+        }
+      )
+      row("git status", "List all new or modified files", "s")
+      row("git diff", "Show file differences that haven't been staged", "d")
+    }
+
+    assertThat(table.toString()).isEqualTo("""
+      || Command | Description | Alias |
+      || :-- | :--: | --: |
+      || git status | List all new or modified files | s |
+      || git diff | Show file differences that haven't been staged | d |
       |""".trimMargin())
   }
 }

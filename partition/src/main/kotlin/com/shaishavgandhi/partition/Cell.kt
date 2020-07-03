@@ -15,22 +15,29 @@
  */
 package com.shaishavgandhi.partition
 
-class Row(
-  internal val cells: List<Cell>
+class Cell @JvmOverloads constructor(
+  internal val value: String,
+  internal val alignment: Alignment = Alignment.NONE
 ) {
+  override fun toString(): String {
+    return value
+  }
 
   override fun equals(other: Any?): Boolean {
     if (this === other) return true
     if (javaClass != other?.javaClass) return false
 
-    other as Row
+    other as Cell
 
-    if (cells != other.cells) return false
+    if (value != other.value) return false
+    if (alignment != other.alignment) return false
 
     return true
   }
 
   override fun hashCode(): Int {
-    return cells.hashCode()
+    var result = value.hashCode()
+    result = 31 * result + alignment.hashCode()
+    return result
   }
 }

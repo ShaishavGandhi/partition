@@ -24,8 +24,12 @@ class TableBuilder {
     return this
   }
 
-  fun header(vararg values: String): TableBuilder {
+  fun header(vararg values: Cell): TableBuilder {
     return header(Row(values.toList()))
+  }
+
+  fun header(vararg values: String): TableBuilder {
+    return header(Row(values.map { it.toCell() }.toList()))
   }
 
   fun row(row: Row): TableBuilder {
@@ -34,7 +38,7 @@ class TableBuilder {
   }
 
   fun row(vararg values: String): TableBuilder {
-    return row(Row(values.toList()))
+    return row(Row(values.map { it.toCell() }.toList()))
   }
 
   fun build(): Table {
@@ -54,5 +58,9 @@ class TableBuilder {
 
   override fun hashCode(): Int {
     return rows.hashCode()
+  }
+
+  internal fun String.toCell(): Cell {
+    return Cell(this)
   }
 }
