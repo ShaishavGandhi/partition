@@ -40,4 +40,19 @@ class TableBuilder {
   fun build(): Table {
     return Table(rows)
   }
+
+  override fun equals(other: Any?): Boolean {
+    if (this === other) return true
+    if (javaClass != other?.javaClass) return false
+
+    other as TableBuilder
+
+    if (rows != other.rows) return false
+
+    return true
+  }
+
+  override fun hashCode(): Int {
+    return rows.hashCode()
+  }
 }

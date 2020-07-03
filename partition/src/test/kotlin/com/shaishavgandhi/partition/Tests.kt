@@ -27,7 +27,7 @@ class Tests {
       .row("Shaishav", "Gandhi")
       .build()
 
-    assertThat(table.output()).isEqualTo("""
+    assertThat(table.toString()).isEqualTo("""
       || Hello | World |
       || -- | -- |
       || Shaishav | Gandhi |
@@ -42,7 +42,7 @@ class Tests {
       .row("0.5ms", "2kb")
       .build()
 
-    assertThat(table.output()).isEqualTo("""
+    assertThat(table.toString()).isEqualTo("""
       || Time | Size |
       || -- | -- |
       || 1ms | 1kb |
@@ -58,7 +58,7 @@ class Tests {
       .row("0.5ms")
       .build()
 
-    assertThat(table.output()).isEqualTo("""
+    assertThat(table.toString()).isEqualTo("""
       || Time |
       || -- |
       || 1ms |
@@ -74,7 +74,7 @@ class Tests {
       .row("0.5ms")
       .build()
 
-    assertThat(table.output()).isEqualTo("""
+    assertThat(table.toString()).isEqualTo("""
       || Time | Size |
       || -- | -- |
       || 1ms |
@@ -90,11 +90,25 @@ class Tests {
       .row("0.5ms", "2kb")
       .build()
 
-    assertThat(table.output()).isEqualTo("""
+    assertThat(table.toString()).isEqualTo("""
       || Time |
       || -- |
       || 1ms | 1kb |
       || 0.5ms | 2kb |
+      |""".trimMargin())
+  }
+
+  @Test
+  fun `dsl`() {
+    val table = table {
+      header("Hello", "World")
+      row("Shaishav", "Gandhi")
+    }
+
+    assertThat(table.toString()).isEqualTo("""
+      || Hello | World |
+      || -- | -- |
+      || Shaishav | Gandhi |
       |""".trimMargin())
   }
 }

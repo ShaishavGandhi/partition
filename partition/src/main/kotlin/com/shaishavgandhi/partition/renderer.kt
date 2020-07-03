@@ -17,10 +17,14 @@ package com.shaishavgandhi.partition
 
 import java.lang.StringBuilder
 
-fun render(table: Table): String {
+internal fun render(table: Table): String {
   val stringBuilder = StringBuilder()
+
+  // Render the header first
   val header = table.rows.first()
   render(header, stringBuilder, true)
+
+  // Render remaining rows
   table.rows.listIterator(1).forEach {
     render(it, stringBuilder)
   }
@@ -34,6 +38,8 @@ private fun render(row: Row, stringBuilder: StringBuilder, isHeader: Boolean = f
     stringBuilder.append("|")
   }
   stringBuilder.append("\n")
+
+  // Add separators for headers
   if (isHeader) {
     stringBuilder.append("|")
     for (cell in row.cells) {
