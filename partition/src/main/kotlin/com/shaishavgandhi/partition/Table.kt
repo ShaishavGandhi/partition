@@ -16,10 +16,25 @@
 package com.shaishavgandhi.partition
 
 class Table(
-  val rows: List<Row>
+  internal val rows: List<Row>
 ) {
 
-  fun output(): String {
+  override fun toString(): String {
     return render(this)
+  }
+
+  override fun equals(other: Any?): Boolean {
+    if (this === other) return true
+    if (javaClass != other?.javaClass) return false
+
+    other as Table
+
+    if (rows != other.rows) return false
+
+    return true
+  }
+
+  override fun hashCode(): Int {
+    return rows.hashCode()
   }
 }
