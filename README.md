@@ -2,14 +2,6 @@
 
 A small library for generating markdown tables. Inspired by [picnic](https://github.com/JakeWharton/picnic)
 
-## Download
-
-Snapshots are currently deployed
-
-```groovy
-implementation 'com.shaishavgandhi.partition:partition:0.1.0-SNAPSHOT'
-```
-
 ## Usage
 
 Here's a simple example with Builder APIs
@@ -74,6 +66,14 @@ which yields
 * Explicit table headers
 * Cell alignment
 * Different markdown providers (upcoming)
+
+## Download
+
+Snapshots are currently deployed
+
+```groovy
+implementation 'com.shaishavgandhi.partition:partition:0.1.0-SNAPSHOT'
+```
 
 ## License
 
