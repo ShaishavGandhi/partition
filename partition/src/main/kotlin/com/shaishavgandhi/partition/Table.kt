@@ -24,6 +24,12 @@ class Table(
   internal val rows: List<Row>
 ) {
 
+  fun toBuilder(): TableBuilder {
+    val tableBuilder = TableBuilder()
+    rows.forEach { tableBuilder.row(it) }
+    return tableBuilder
+  }
+
   override fun toString(): String {
     return render(this)
   }

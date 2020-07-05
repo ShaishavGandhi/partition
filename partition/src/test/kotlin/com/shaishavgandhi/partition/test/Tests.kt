@@ -160,4 +160,13 @@ class Tests {
       || git diff | Show file differences that haven't been staged | d |
       |""".trimMargin())
   }
+
+  @Test
+  fun toBuilder() {
+    val tableBuilder = TableBuilder()
+      .header("Hello", "World")
+      .row("Shaishav", "Gandhi")
+
+    assertThat(tableBuilder.build().toBuilder()).isEqualTo(tableBuilder)
+  }
 }
