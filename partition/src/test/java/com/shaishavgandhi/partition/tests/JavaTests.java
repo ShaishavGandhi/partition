@@ -42,7 +42,6 @@ public class JavaTests {
                 + "\n");
   }
 
-
   @Test
   public void testToBuilder() {
     TableBuilder tableBuilder =
