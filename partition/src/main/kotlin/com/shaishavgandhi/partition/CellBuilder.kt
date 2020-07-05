@@ -15,8 +15,9 @@
  */
 package com.shaishavgandhi.partition
 
-fun cell(builder: CellBuilder.() -> Unit): Cell = CellBuilder().apply(builder).build()
-
+/**
+ * Convenience class for setting up the DSL-like syntax for Kotlin clients.
+ */
 class CellBuilder {
   var value: String = ""
     @JvmName("value")

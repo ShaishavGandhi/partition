@@ -15,10 +15,17 @@
  */
 package com.shaishavgandhi.partition
 
+/**
+ * A general purpose data structure to represent a single Cell in a table.
+ *
+ * Cells can have [Alignment] but in reality that only applies if you provide it within a header since
+ * Markdown only provides alignment of entire columns and not individual cells.
+ */
 class Cell @JvmOverloads constructor(
   internal val value: String,
   internal val alignment: Alignment = Alignment.NONE
 ) {
+
   override fun toString(): String {
     return value
   }
