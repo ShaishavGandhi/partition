@@ -41,4 +41,19 @@ public class JavaTests {
                 + "| git diff | Show file differences that haven't been staged | d |"
                 + "\n");
   }
+
+
+  @Test
+  public void testToBuilder() {
+    TableBuilder tableBuilder =
+        new TableBuilder()
+            .header(
+                new Cell("Command"),
+                new Cell("Description", Alignment.CENTER),
+                new Cell("Alias", Alignment.END))
+            .row("git status", "List all new or modified files", "s")
+            .row("git diff", "Show file differences that haven't been staged", "d");
+
+    assertThat(tableBuilder.build().toBuilder()).isEqualTo(tableBuilder);
+  }
 }
