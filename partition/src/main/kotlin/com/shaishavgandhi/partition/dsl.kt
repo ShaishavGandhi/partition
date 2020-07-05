@@ -15,7 +15,15 @@
  */
 package com.shaishavgandhi.partition
 
+/**
+ * DSL entry point for Kotlin consumers.
+ */
 fun table(builder: TableBuilder.() -> TableBuilder): Table {
   val tableBuilder = TableBuilder()
   return tableBuilder.builder().build()
 }
+
+/**
+ * DSL entry point for Kotlin consumers to create a [Cell].
+ */
+fun cell(builder: CellBuilder.() -> Unit): Cell = CellBuilder().apply(builder).build()

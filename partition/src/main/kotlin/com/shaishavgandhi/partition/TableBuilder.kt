@@ -15,28 +15,58 @@
  */
 package com.shaishavgandhi.partition
 
+/**
+ * Entry point to start building your markdown table.
+ */
 class TableBuilder {
 
   private val rows: MutableList<Row> = mutableListOf()
 
+  /**
+   * Add a header to the table
+   *
+   * @param row The row that represents the header.
+   * @return [TableBuilder]
+   */
   fun header(row: Row): TableBuilder {
     rows.add(0, row)
     return this
   }
 
+  /**
+   * Adds the given [values] as the header of the table.
+   *
+   * The [Cell] allows you to specify alignments.
+   *
+   * @param values The list of [Cell] to use as header.
+   * @return [TableBuilder]
+   */
   fun header(vararg values: Cell): TableBuilder {
     return header(Row(values.toList()))
   }
 
+  /**
+   * Adds the given [values] as the header of the table.
+   *
+   * @param values The list of String to output as the header of the table.
+   */
   fun header(vararg values: String): TableBuilder {
     return header(Row(values.map { it.toCell() }.toList()))
   }
 
+  /**
+   * Adds a row to the table.
+   */
   fun row(row: Row): TableBuilder {
     rows.add(row)
     return this
   }
 
+  /**
+   * Convenience method for adding multiple cells to the row.
+   *
+   * @param values The cells that make up a row.
+   */
   fun row(vararg values: String): TableBuilder {
     return row(Row(values.map { it.toCell() }.toList()))
   }

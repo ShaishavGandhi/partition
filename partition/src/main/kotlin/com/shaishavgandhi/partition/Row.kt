@@ -15,6 +15,9 @@
  */
 package com.shaishavgandhi.partition
 
+/**
+ * Represents a row of the table and consists of a list of [Cell].
+ */
 class Row(
   internal val cells: List<Cell>
 ) {

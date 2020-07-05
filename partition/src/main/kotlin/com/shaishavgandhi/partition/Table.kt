@@ -15,6 +15,11 @@
  */
 package com.shaishavgandhi.partition
 
+/**
+ * Represents a table that contains a list of [Row].
+ *
+ * The first of the [rows] is defaulted to be a header since Markdown tables require a header.
+ */
 class Table(
   internal val rows: List<Row>
 ) {

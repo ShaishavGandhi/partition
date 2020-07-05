@@ -15,6 +15,9 @@
  */
 package com.shaishavgandhi.partition
 
+/**
+ * Specifies the alignment of a [Cell].
+ */
 enum class Alignment {
   START,
   CENTER,
