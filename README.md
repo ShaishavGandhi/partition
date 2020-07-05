@@ -61,6 +61,37 @@ which yields
 | git status | List all new or modified files | s |
 | git diff | Show file differences that haven't been staged | d |
 
+### Regular Markdown
+
+Of course, you can also just use regular markdown in your Cell values as well. 
+
+```kotlin
+val table = table {
+  header(
+    cell {
+      value = "Command"
+      alignment = Alignment.START
+    },
+    cell {
+      value = "Description"
+      alignment = Alignment.CENTER
+    },
+    cell {
+      value = "Alias"
+      alignment = Alignment.END
+    }
+  )
+  row("_git status_", "List all new or modified files", "s")
+  row("_git diff_", "Show file differences that haven't been staged", "d")
+}
+```
+which yields (notice the italics for the commands)
+
+| Command | Description | Alias |
+| :-- | :--: | --: |
+| _git status_ | List all new or modified files | s |
+| _git diff_ | Show file differences that haven't been staged | d |
+
 ## Features
 
 * Explicit table headers
@@ -69,10 +100,10 @@ which yields
 
 ## Download
 
-Snapshots are currently deployed
+[![Maven Central](https://img.shields.io/maven-central/v/com.shaishavgandhi.partition/partition.svg)](https://mvnrepository.com/artifact/com.shaishavgandhi.partition/partition)
 
 ```groovy
-implementation 'com.shaishavgandhi.partition:partition:0.1.0-SNAPSHOT'
+implementation 'com.shaishavgandhi.partition:partition:x.y.z'
 ```
 
 ## License
