@@ -169,4 +169,33 @@ class Tests {
 
     assertThat(tableBuilder.build().toBuilder()).isEqualTo(tableBuilder)
   }
+
+  @Test
+  fun `table with markdown text`() {
+    val table = table {
+      header(
+        cell {
+          value = "Command"
+          alignment = Alignment.START
+        },
+        cell {
+          value = "Description"
+          alignment = Alignment.CENTER
+        },
+        cell {
+          value = "Alias"
+          alignment = Alignment.END
+        }
+      )
+      row("_git status_", "List all new or modified files", "s")
+      row("_git diff_", "Show file differences that haven't been staged", "d")
+    }
+
+    assertThat(table.toString()).isEqualTo("""
+      || Command | Description | Alias |
+      || :-- | :--: | --: |
+      || _git status_ | List all new or modified files | s |
+      || _git diff_ | Show file differences that haven't been staged | d |
+      |""".trimMargin())
+  }
 }
